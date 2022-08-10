@@ -1,5 +1,5 @@
-import { useGetLessonsQuery } from "../graphql/generated";
 import { Lesson } from "./Lesson";
+import { useGetLessonsQuery } from "../graphql/generated";
 
 export function Sidebar () {
   const { data } = useGetLessonsQuery()
@@ -10,17 +10,15 @@ export function Sidebar () {
         Cronograma de aulas
       </span>
       <div className="flex flex-col gap-8">
-        {data?.lessons.map(lesson => {
-          return (
-            <Lesson 
-              key={lesson.id}
-              title={ lesson.title }
-              slug={ lesson.slug }
-              availableAt={ new Date(lesson.availableAt) }
-              type={ lesson.lessonType }
-            />
-          )
-        })}
+        {data?.lessons.map(lesson => (
+          <Lesson  
+            key={ lesson.id }
+            title={ lesson.title }
+            slug={ lesson.slug }
+            availableAt={ new Date(lesson.availableAt) }
+            type={ lesson.lessonType }
+          /> 
+        ))}
       </div>
     </aside>
   )
