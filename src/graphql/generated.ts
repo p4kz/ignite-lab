@@ -5586,7 +5586,7 @@ export type GetLessonBySlugQuery = { __typename?: 'Query', lesson?: { __typename
 export type GetLessonsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetLessonsQuery = { __typename?: 'Query', lessons: Array<{ __typename?: 'Lesson', id: string, slug: string, title: string, lessonType: LessonType, availableAt?: any | null }> };
+export type GetLessonsQuery = { __typename?: 'Query', lessons: Array<{ __typename?: 'Lesson', id: string, lessonType: LessonType, availableAt?: any | null, title: string, slug: string }> };
 
 
 export const CreateSubscriberDocument = gql`
@@ -5669,10 +5669,10 @@ export const GetLessonsDocument = gql`
     query GetLessons {
   lessons(orderBy: availableAt_ASC, stage: PUBLISHED) {
     id
-    slug
-    title
     lessonType
     availableAt
+    title
+    slug
   }
 }
     `;
